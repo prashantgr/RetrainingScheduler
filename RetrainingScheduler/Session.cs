@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace RetrainingScheduler;
-
 
 public class Session
 {
@@ -14,6 +14,7 @@ public class Session
 	public int RemainingTime { get; private set; }
 	public DateTime StartTime { get; private set; }
 
+	// Constructor
 	public Session(int maxDuration, DateTime startTime)
 	{
 		Talks = new List<Talk>();
@@ -22,6 +23,7 @@ public class Session
 		StartTime = startTime;
 	}
 
+	// Add talk to session
 	public bool AddTalk(Talk talk)
 	{
 		if (talk.Duration <= RemainingTime)
@@ -33,21 +35,23 @@ public class Session
 		return false;
 	}
 
+	// Check if session is full
 	public void PrintSession(ref DateTime currentTime)
 	{
 		foreach (var talk in Talks)
 		{
 			if (talk.Duration == 5)
 			{
-				Console.WriteLine($"{currentTime:hh:mmtt} | {talk.Title} | lightning");
+				Console.WriteLine($"{currentTime.ToString("hh:mmtt", CultureInfo.InvariantCulture).ToUpper()} | {talk.Title} | lightning");
 			}
 			else
 			{
-				Console.WriteLine($"{currentTime:hh:mmtt} | {talk.Title} | {talk.Duration}min");
+				Console.WriteLine($"{currentTime.ToString("hh:mmtt", CultureInfo.InvariantCulture).ToUpper()} | {talk.Title} | {talk.Duration}min");
 			}
 			currentTime = currentTime.AddMinutes(talk.Duration);
 		}
 	}
+  
 }
 
 
