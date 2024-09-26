@@ -1,11 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace RetrainingScheduler;
-
 
 public class ConferenceScheduler
 {
@@ -18,6 +17,7 @@ public class ConferenceScheduler
 		Tracks = new List<Track>();
 	}
 
+	// Schedule the talks
 	public void Schedule()
 	{
 		int trackNumber = 1;
@@ -31,6 +31,7 @@ public class ConferenceScheduler
 		}
 	}
 
+	// Fill the session with talks
 	private void FillSession(Session session)
 	{
 		List<Talk> scheduledTalks = new List<Talk>();
@@ -48,6 +49,7 @@ public class ConferenceScheduler
 		}
 	}
 
+	// Print the schedule
 	public void PrintSchedule()
 	{
 		foreach (var track in Tracks)
