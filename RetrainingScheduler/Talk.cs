@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace RetrainingScheduler;
@@ -14,6 +14,7 @@ public class Talk
 		Duration = ParseDuration(duration);
 	}
 
+	// Parse duration from string
 	private int ParseDuration(string duration)
 	{
 		if (duration.Equals("lightning", StringComparison.OrdinalIgnoreCase))
@@ -33,6 +34,7 @@ public class Talk
 		throw new ArgumentException("Invalid duration format.");
 	}
 
+	// Override ToString method
 	public override string ToString()
 	{
 		return $"{Title} ({Duration}min)";
